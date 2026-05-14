@@ -1,21 +1,23 @@
-import { LayoutDashboard, Users, Package, ShoppingCart, BarChart3 } from 'lucide-react'
+import React from 'react'
+import { LayoutDashboard, Users, Package, ShoppingCart, BarChart3, Settings } from 'lucide-react'
 
 const items = [
-  { icon: LayoutDashboard, text: 'Dashboard' },
-  { icon: Users, text: 'Clientes' },
-  { icon: Package, text: 'Inventario' },
-  { icon: ShoppingCart, text: 'Ventas' },
-  { icon: BarChart3, text: 'Reportes' },
+  { id: 'dashboard', icon: LayoutDashboard, text: 'Dashboard' },
+  { id: 'customers', icon: Users, text: 'Clientes' },
+  { id: 'inventory', icon: Package, text: 'Inventario' },
+  { id: 'sales', icon: ShoppingCart, text: 'Ventas' },
+  { id: 'reports', icon: BarChart3, text: 'Reportes' },
+  { id: 'settings', icon: Settings, text: 'Configuración' },
 ]
 
-export default function Sidebar() {
+export default function Sidebar({ activePage, setActivePage }) {
   return (
     <aside className="sidebar">
       <div className="logo">
         <span>SB</span>
         <div>
           <h2>SmartBusiness</h2>
-          <p>Panel SaaS</p>
+          <p>AI SaaS Platform</p>
         </div>
       </div>
 
@@ -23,7 +25,11 @@ export default function Sidebar() {
         {items.map((item) => {
           const Icon = item.icon
           return (
-            <button className="nav-item" key={item.text}>
+            <button
+              className={`nav-item ${activePage === item.id ? 'active' : ''}`}
+              key={item.id}
+              onClick={() => setActivePage(item.id)}
+            >
               <Icon size={18} />
               {item.text}
             </button>
