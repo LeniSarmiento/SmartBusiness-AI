@@ -7,4 +7,5 @@ class SaleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Sale
-        fields = '__all__'
+        fields = ['id', 'customer', 'customer_name', 'product', 'product_name', 'quantity', 'total', 'payment_method', 'note', 'created_at']
+        read_only_fields = ['id', 'customer_name', 'product_name', 'created_at']

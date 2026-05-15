@@ -1,1 +1,1 @@
-# Este módulo se usa para reportes y recomendaciones.
+# Módulo para reportes inteligentes.
